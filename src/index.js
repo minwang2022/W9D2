@@ -1,10 +1,13 @@
-console.log("Webpack is working!")
+console.log("Webpack is working!!!!!")
 
 const MovingObject = require("./moving_object.js");
 window.MovingObject = MovingObject;
 
 const Asteroid = require("./asteroid.js");
 window.Asteroid = Asteroid;
+
+const Game = require("./game.js");
+window.Game = Game;
 
 document.addEventListener("DOMContentLoaded", () => {
     const canvasEle = document.getElementById("game-canvas");
@@ -31,9 +34,11 @@ document.addEventListener("DOMContentLoaded", () => {
     mo1.draw(ctx);
 
     const as1 = new Asteroid({
-        pos: [80, 100]
+        pos: [80, 200]
     });
 
+    debugger
     as1.draw(ctx);
+
 
 })
