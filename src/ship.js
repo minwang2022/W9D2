@@ -15,6 +15,10 @@ function Ship(options) {
     MovingObject.call(this, options);
 };
 
+Ship.prototype.relocate = function() {
+    this.pos = this.game.randomPosition();
+};
+
 //Inherit from MovingObject
 Util.inherits(Ship, MovingObject);
 

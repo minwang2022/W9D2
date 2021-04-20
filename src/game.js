@@ -6,7 +6,7 @@ function Game(){
     this.DIM_Y = 500;
     this.NUM_ASTEROIDS = 5;
     this.asteroids = [];
-    this.ship = new Ship( {pos: this.randomPosition()}); 
+    this.ship = new Ship( {pos: this.randomPosition(), game: this}); 
 } 
 
 Game.prototype.randomPosition = function() {
@@ -25,16 +25,17 @@ Game.prototype.addAsteroids = function() {
 Game.prototype.draw = function(ctx) {
     //call clearRect on the ctx to wipe down the entire space.
     ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y);
-
+    
     //Call the draw method on each of the asteroids.
-    for (let i = 0; i < this.allObjects.length; i++) {
-        this.allObjects[i].draw(ctx)
+    for (let i = 0; i < this.allObjects().length; i++) {
+        
+        this.allObjects()[i].draw(ctx)
     }
 }
 
 Game.prototype.moveObjects = function () {
-    for (let i = 0; i < this.allObjects.length; i++) {
-        this.allObjects[i].move()
+    for (let i = 0; i < this.allObjects().length; i++) {
+        this.allObjects()[i].move()
     }
 }
 
@@ -58,12 +59,12 @@ Game.prototype.wrap = function (pos) {
 
 
 Game.prototype.checkCollisions = function() {
-    for (let i = 0; i < this.allObjects.length; i++) {
-        for (let j = i + 1; j < this.allObjects.length; j++) {
-
+    for (let i = 0; i < this.allObjects().length; i++) {
+        for (let j = i + 1; j < this.allObjects().length; j++) {
     
-           if (this.allObjects[i].isCollidedWith(this.allObjects[j])) {
-                this.allObjects[i].collideWith(this.allObjects[j]);
+           if (this.allObjects()[i].isCollidedWith(this.allObjects()[j])) {
+                debugger
+                this.allObjects()[i].collideWith(this.allObjects()[j]);
             } 
         }
     }
@@ -72,7 +73,7 @@ Game.prototype.checkCollisions = function() {
 Game.prototype.step = function(){
     this.moveObjects();
     this.checkCollisions();
-
+    
 
 }
 
@@ -83,6 +84,7 @@ Game.prototype.remove = function(asteroid){
 
 
 Game.prototype.allObjects = function() {
-    return this.asteroids.push(this.ship);
+    
+    return this.asteroids.concat(this.ship);
 }
 module.exports = Game;

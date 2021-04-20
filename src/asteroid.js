@@ -28,6 +28,14 @@ function Asteroid(options) {
     MovingObject.call(this, options);
 };
 
+Asteroid.prototype.collideWith = function(otherObject) {
+    console.log("asteroid collideWith");
+
+    if (otherObject instanceof Ship) {
+        otherObject.relocate();
+    };
+};
+
 
 
 //Inherit from MovingObject

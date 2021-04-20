@@ -26,7 +26,6 @@ MovingObject.prototype.move = function() {
     this.pos = this.game.wrap(this.pos);
 }
 
-
 MovingObject.prototype.isCollidedWith = function(otherObject) {
     let xDiff = Math.abs(this.pos[0] - otherObject.pos[0]);
     let yDiff = Math.abs(this.pos[1] - otherObject.pos[1]);
@@ -34,13 +33,16 @@ MovingObject.prototype.isCollidedWith = function(otherObject) {
     let distance = Math.sqrt(Math.pow(xDiff, 2) + Math.pow(yDiff, 2));
 
     return distance < (this.radius + otherObject.radius);
-
 }
+
 MovingObject.prototype.collideWith = function(otherObject) {
-    this.game.remove(this);
-    this.game.remove(otherObject);
-
+    // this.game.remove(this);
+    // this.game.remove(otherObject);
+    //Instead, overwrite the superclass's method with 
+    //Asteroid.prototype.collideWith(otherObject)
+    console.log("moving object collideWith");
 }
+
 module.exports = MovingObject;
 
 

@@ -1,4 +1,4 @@
-console.log("Webpack is working????")
+console.log("Webpack is wasdfaorking????")
 
 const MovingObject = require("./moving_object.js");
 window.MovingObject = MovingObject;
@@ -45,5 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // g.draw(ctx);
 
     const gv = new GameView(ctx);
+    
     gv.start();
 })
