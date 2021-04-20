@@ -5,6 +5,20 @@ function MovingObject(options) {
     this.color = options.color;
 };
 
+MovingObject.prototype.draw = function(ctx) {
+    ctx.fillstyle = this.color;
+    ctx.beginPath();
+    ctx.arc(
+        this.pos[0],
+        this.pos[1],
+        this.radius,
+        0,
+        2 * Math.PI,
+        false
+    );
+    
+    ctx.fill();
+}
 module.exports = MovingObject;
 
 
